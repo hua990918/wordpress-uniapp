@@ -1,7 +1,11 @@
 <template>
-  <view>分类</view>
+    <view class="category">
+        <Cate />
+    </view>
 </template>
 
-<script setup></script>
+<script setup>
+    import Cate from './components/cate.vue'
+</script>
 
 <style lang="scss" scoped></style>
