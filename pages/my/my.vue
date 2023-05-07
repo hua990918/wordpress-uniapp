@@ -3,6 +3,7 @@
         <Top />
         <view class="my-info">
             <Record />
+            <About />
         </view>
     </view>
 </template>
@@ -10,6 +11,7 @@
 <script setup>
     import Top from './components/top.vue'
     import Record from './components/record.vue'
+    import About from './components/about.vue'
 </script>
 
 <style lang="scss" scoped>
