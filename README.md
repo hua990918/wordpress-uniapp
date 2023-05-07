@@ -2,7 +2,7 @@
 
 本项目以 WordPress RestFul API为基础，实现了一款对接WordPress网站的UniApp，可被编译为 Android APP、iOS APP、微信小程序 和 H5手机网站，在UniApp的加持下，使用`Vue`的语法进行了完全重构，因此可以被编译到更多的平台，实现一套代码，多端运行。本套程序额外增加了对 WordPress原生用户系统登录的支持，增加了可扩展性，支持进行二次开发对接任意的WordPress主题。
 
-
+![](https://s1.ax1x.com/2023/05/07/p9wPR2D.png)
 
 ## 平台兼容性
 
@@ -28,15 +28,12 @@
 
 ## 项目配置
 
+- git clone项目，进入项目目录npm install 安装依赖文件
+
 - 配置项目根目录env文件，UNI_APP_API_DEFAULT替换为自己的域名（生产环境）
 
 - 配置项目根目录vite.config.js文件，proxy-target替换为自己的域名（开发环境跨域）
 
-- 文章发布管理
-
-- 完善错误处理
-
-  
 
 ## TODO
 
@@ -46,8 +43,6 @@
 - 完善错误处理
 - 二维码登录网站
 - Q&A
-
-
 
 ## 特别感谢
 
