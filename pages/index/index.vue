@@ -18,7 +18,7 @@
 
 <style lang="scss" scoped>
     .index {
-        height: 100vh;
+        height: 100%;
         background: #f1f1f1;
         &-pad {
             padding: 3%;

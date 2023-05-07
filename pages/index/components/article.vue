@@ -5,13 +5,12 @@
             style="margin-top: 20rpx">
             <view class="article-item">
                 <view class="article-item-left">
-                    <view class="article-item-left_title">3年轻人20万开店日营业额仅79元-热搜的看法</view>
+                    <view class="article-item-left_title">3年轻人20万开店日营业额仅79元-热搜的看法店日营业额仅79元-热搜的看法店日营业额仅79元-热搜的看法</view>
                     <view class="article-item-left_desc">
-                        <view>2023-04-27</view>
-
-                        <view>
+                        <view class="article-item-left_date">2023-04-27</view>
+                        <view class="article-item-left_infos">
                             <u-icon name="eye"></u-icon>
-                            356
+                            <view>356</view>
                         </view>
                     </view>
                 </view>
@@ -35,12 +34,31 @@
 <style lang="scss" scoped>
     .article {
         margin-top: 35rpx;
+        padding-bottom: 10rpx;
         &-item {
             display: flex;
             &-left {
                 &_title {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
                 }
                 &_desc {
+                    display: flex;
+                    align-items: center;
+                    padding-top: 10rpx;
+                    color: #9e9e9e;
+                    font-size: 28rpx;
+                }
+                &_date {
+                }
+                &_infos {
+                    display: flex;
+                    align-items: center;
+                    margin-left: 20rpx;
+                    margin-top: 2rpx;
                 }
             }
             &-right {
