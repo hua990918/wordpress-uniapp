@@ -1,12 +1,15 @@
 <template>
     <view class="my">
         <Top />
-        <view class="my-info"></view>
+        <view class="my-info">
+            <Record />
+        </view>
     </view>
 </template>
 
 <script setup>
     import Top from './components/top.vue'
+    import Record from './components/record.vue'
 </script>
 
 <style lang="scss" scoped>
