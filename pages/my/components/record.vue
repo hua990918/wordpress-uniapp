@@ -62,6 +62,9 @@
 <style lang="scss" scoped>
     .record {
         margin-top: 100rpx;
+        /* #ifdef MP-WEIXIN */
+        margin-top: 180rpx;
+        /* #endif */
         &-title {
             display: flex;
             align-items: center;
