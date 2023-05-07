@@ -29,8 +29,18 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue'
+    import { ref, onMounted } from 'vue'
     import xCard from '@/components/x-card/x-card.vue'
+    import { getArticle } from '@/api'
+
+    onMounted(() => {
+        getArticleList()
+    })
+
+    async function getArticleList() {
+        const res = await getArticle()
+        console.log(res)
+    }
 </script>
 
 <style lang="scss" scoped>
