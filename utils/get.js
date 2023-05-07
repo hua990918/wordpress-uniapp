@@ -21,17 +21,14 @@ export const getTitle = () => {
 export const getType = (val) => Object.prototype.toString.call(val).slice(8, -1).toLowerCase()
 
 /**
+ * 格式化当前时间
+ */
+
+export const getTime = (val) => dayjs(val).format('YYYY-MM-DD')
+/**
  * 获取当前星期几
  * 0(星期日)到6(星期六)的数字
  */
 export const getWeek = () => {
     return dayjs().day()
-}
-
-/**
- * 获取当前时间点
- * 0到23的数字
- */
-export const getTime = () => {
-    return dayjs().hour()
 }

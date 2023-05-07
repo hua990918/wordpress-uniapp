@@ -2,23 +2,23 @@
     <view class="article">
         <view
             class="article-mg"
-            v-for="(item, index) in 5">
+            v-for="(item, index) in articleList">
             <xCard>
                 <view class="article-item">
                     <view class="article-item-left">
-                        <view class="article-item-left_title">3年轻人20万开店日营业额仅79元-热搜的看法店日营业额仅79元-热搜的看法店日营业额仅79元-热搜的看法</view>
+                        <view class="article-item-left_title">{{ item.title?.rendered }}</view>
                         <view class="article-item-left_desc">
-                            <view class="article-item-left_date">2023-04-27</view>
+                            <view class="article-item-left_date">{{ item._time }}</view>
                             <view class="article-item-left_infos">
                                 <u-icon name="eye"></u-icon>
-                                <view>356</view>
+                                <view>{{ item.pageviews }}</view>
                             </view>
                         </view>
                     </view>
                     <view class="article-item-right">
                         <u--image
                             :showLoading="true"
-                            src="https://www.watch-life.net/images/2023/04/大医-211x300.jpg"
+                            :src="item.post_frist_image"
                             width="202rpx"
                             height="134rpx"></u--image>
                     </view>
@@ -31,15 +31,26 @@
 <script setup>
     import { ref, onMounted } from 'vue'
     import xCard from '@/components/x-card/x-card.vue'
+    import { getTime } from '@/utils/get.js'
     import { getArticle } from '@/api'
+    import dayjs from 'dayjs'
 
     onMounted(() => {
         getArticleList()
     })
-
+    /**
+     * 获取最近10篇文章
+     */
+    const articleList = ref([])
     async function getArticleList() {
         const res = await getArticle()
-        console.log(res)
+
+        const records = res.map((item) => ({
+            ...item,
+            _time: getTime(item.date),
+        }))
+        console.log(dayjs(res.date).format('YYYY-MM-DD'))
+        articleList.value = records
     }
 </script>
 
@@ -83,6 +94,7 @@
                 }
             }
             &-right {
+                margin-left: auto;
             }
         }
     }
