@@ -21,7 +21,7 @@
                 <view class="list-item">
                     <view>
                         <image
-                            :src="item.category_thumbnail_image"
+                            src="https://www.watch-life.net/images/2019/11/minapper-300x168.jpg"
                             class="cover"
                             mode="aspectFill"></image>
                     </view>
@@ -104,7 +104,9 @@
             padding: 10rpx 0 0;
             background: #f5f7f7;
             box-sizing: border-box;
-
+            /* #ifdef H5 */
+            padding-bottom: 100rpx;
+            /* #endif */
             .list-item {
                 position: relative;
                 overflow: hidden;
@@ -115,13 +117,13 @@
 
                 .cover {
                     width: 100%;
-                    height: 200rpx;
+                    height: 140rpx;
                     display: block;
                 }
             }
 
             .content-title {
-                padding: 20rpx 30rpx 0;
+                padding: 5rpx 30rpx 0;
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
@@ -140,7 +142,7 @@
             .content-brief {
                 width: 70%;
                 /* margin: 0 auto; */
-                padding: 0 0 30rpx 30rpx;
+                padding: 0 0 20rpx 30rpx;
                 font-size: 26rpx;
                 overflow: hidden;
                 text-overflow: ellipsis;

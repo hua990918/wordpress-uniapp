@@ -29,9 +29,9 @@
         }
     ],
     "globalStyle": {
-        "navigationBarTextStyle": "black",
+        "navigationBarTextStyle": "white",
         "navigationBarTitleText": "云言博客",
-        "navigationBarBackgroundColor": "#F8F8F8",
+        "navigationBarBackgroundColor": "#0081ff",
         "backgroundColor": "#F8F8F8"
     },
     "uniIdRouter": {},
