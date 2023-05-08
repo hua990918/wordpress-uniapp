@@ -6,6 +6,8 @@
             scroll-y="true">
             <view
                 class="parent-item"
+                :class="{ active: currentParentId === item.id }"
+                @click="handelClick(item, index)"
                 v-for="(item, index) in cateList"
                 :key="index">
                 {{ item.name }}
@@ -16,7 +18,7 @@
             class="right"
             scroll-y="true">
             <block
-                v-for="(item, index) in 10"
+                v-for="(item, index) in selectCateList"
                 :key="index">
                 <view class="list-item">
                     <view>
@@ -27,11 +29,11 @@
                     </view>
                     <view class="content-title">
                         <view class="topic-name">
-                            <text>itemname</text>
+                            <text>{{ item.name }}</text>
                         </view>
                     </view>
                     <view class="content-brief">
-                        <text>itemdesc</text>
+                        <text>{{ item.description }}</text>
                     </view>
                 </view>
             </block>
@@ -47,13 +49,31 @@
         getCateList()
     })
 
+    const currentParentId = ref(36)
+    const cateList = ref([]) // 一级分类
+    const allCateList = ref([]) // 总分类
+    const selectCateList = ref([])
+
     /**
      * 获取分类信息
      */
-    const cateList = ref([])
     async function getCateList() {
         const res = await getCate(100)
-        cateList.value = res
+        const records = res.filter((item) => item.parent === 0)
+        const records2 = res.filter((item) => item.parent === currentParentId.value)
+        selectCateList.value = records2
+        cateList.value = records
+        allCateList.value = res
+    }
+
+    /**
+     * 点击分类
+     */
+    function handelClick(items, index) {
+        currentParentId.value = items.id
+        const records = allCateList.value.filter((item) => item.parent === items.id)
+
+        selectCateList.value = records
     }
 </script>
 
