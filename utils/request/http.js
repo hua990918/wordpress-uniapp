@@ -60,15 +60,15 @@ instance.interceptors.request.use((req) => {
 // 响应拦截器
 instance.interceptors.response.use(
     (res) => {
-        if (![0].includes(res?.data?.code)) {
-            setTimeout(() => {
-                uni.showToast({
-                    // title: `${res?.data?.msg ?? '网络错误'}[${res?.data?.code ?? 100}]`, 携带错误码1
-                    title: `${res?.data?.msg ?? '网络错误'}`,
-                    icon: 'none',
-                })
-            }, 100)
-        }
+        // if (![0].includes(res?.data?.code)) {
+        //     setTimeout(() => {
+        //         uni.showToast({
+        //             // title: `${res?.data?.msg ?? '网络错误'}[${res?.data?.code ?? 100}]`, 携带错误码1
+        //             title: `${res?.data?.msg ?? '网络错误'}`,
+        //             icon: 'none',
+        //         })
+        //     }, 100)
+        // }
 
         return isString(res.data) ? JSON.parse(res.data) : res.data
     },

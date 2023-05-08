@@ -16,16 +16,16 @@
                     :border="false"
                     col="4">
                     <u-grid-item
-                        v-for="(listItem, listIndex) in list"
+                        v-for="(item, index) in bannerList"
                         @click="handleClick(listItem)"
-                        :key="listIndex">
+                        :key="item">
                         <u--image
                             :showLoading="true"
-                            src="https://www.watch-life.net/images/2021/01/watch-life.png"
+                            :src="item.image"
                             shape="circle"
                             width="80rpx"
                             height="80rpx"></u--image>
-                        <text class="grid-text">{{ listItem.title }}</text>
+                        <text class="grid-text">{{ item.title }}</text>
                     </u-grid-item>
                 </u-grid>
             </view>
@@ -34,27 +34,22 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue'
+    import { ref, onMounted } from 'vue'
     import xCard from '@/components/x-card/x-card.vue'
+    import { getSetting } from '@/api'
 
-    const list = ref([
-        {
-            name: 'photo',
-            title: '前端开发',
-        },
-        {
-            name: 'lock',
-            title: 'NodeJs',
-        },
-        {
-            name: 'star',
-            title: 'JavaScript',
-        },
-        {
-            name: 'hourglass',
-            title: '飞拍科技',
-        },
-    ])
+    onMounted(() => {
+        getSettings()
+    })
+
+    /**
+     * 获取轮播图
+     */
+    const bannerList = ref([])
+    async function getSettings() {
+        const { expand } = await getSetting()
+        bannerList.value = expand.selected_nav
+    }
 
     /**
      * 点击事件
@@ -84,7 +79,7 @@
         }
         .grid-text {
             padding-top: 8rpx;
-            font-size: 30rpx;
+            font-size: 28rpx;
             color: #9e9e9e;
         }
     }

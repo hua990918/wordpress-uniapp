@@ -21,16 +21,24 @@
 </template>
 
 <script setup>
-    import { ref } from 'vue'
+    import { ref, onMounted } from 'vue'
     import xCard from '@/components/x-card/x-card.vue'
+    import { getSetting } from '@/api'
 
     const keyword = ref('')
 
-    const bannerList = ref([
-        'https://cdn.uviewui.com/uview/swiper/swiper3.png',
-        'https://cdn.uviewui.com/uview/swiper/swiper2.png',
-        'https://cdn.uviewui.com/uview/swiper/swiper1.png',
-    ])
+    onMounted(() => {
+        getSettings()
+    })
+    /**
+     * 获取轮播图
+     */
+    const bannerList = ref([])
+    async function getSettings() {
+        const { expand } = await getSetting()
+        const records = expand.swipe_nav.map((item) => item.image)
+        bannerList.value = records
+    }
 </script>
 
 <style lang="scss" scoped>
