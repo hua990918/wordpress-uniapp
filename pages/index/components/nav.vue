@@ -14,7 +14,7 @@
 <script setup>
     import { ref } from 'vue'
 
-    const src = ref('https://www.watch-life.net/h5/static/images/logo.png')
+    const src = ref('https://s1.ax1x.com/2023/05/08/p9wIXOe.png')
 </script>
 
 <style lang="scss" scoped>

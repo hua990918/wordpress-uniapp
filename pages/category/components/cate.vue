@@ -6,9 +6,9 @@
             scroll-y="true">
             <view
                 class="parent-item"
-                v-for="(item, index) in 20"
+                v-for="(item, index) in cateList"
                 :key="index">
-                前端开发
+                {{ item.name }}
             </view>
         </scroll-view>
         <!-- 右侧 -->
@@ -39,7 +39,23 @@
     </view>
 </template>
 
-<script setup></script>
+<script setup>
+    import { ref, onMounted } from 'vue'
+    import { getCate } from '@/api'
+
+    onMounted(() => {
+        getCateList()
+    })
+
+    /**
+     * 获取分类信息
+     */
+    const cateList = ref([])
+    async function getCateList() {
+        const res = await getCate(100)
+        cateList.value = res
+    }
+</script>
 
 <style lang="scss" scoped>
     page {
